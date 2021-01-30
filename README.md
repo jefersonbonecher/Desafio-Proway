@@ -12,7 +12,7 @@ Esse projeto foi desenvolvido para resolver um desafio. O desafio tem como objet
 - IDE SpringToolSuite4
 - Postaman 
 ###Executar
-- Download do Código. git clone
+- Download do Código. git clone:https://github.com/jefersonbonecher/Desafio-Proway
 - abri o projeto na ide SpringToolSuite4
 - encontrar o arquivo DesafioApiApplication.java botão direito do mouse opção Run As Sring boot App
 - abrir o postman e colocar http://localhost:8080/ 
