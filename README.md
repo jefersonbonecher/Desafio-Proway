@@ -15,4 +15,14 @@ Esse projeto foi desenvolvido para resolver um desafio. O desafio tem como objet
 - Download do Código. git clone:https://github.com/jefersonbonecher/Desafio-Proway
 - abri o projeto na ide SpringToolSuite4
 - encontrar o arquivo DesafioApiApplication.java botão direito do mouse opção Run As Sring boot App
-- abrir o postman e colocar http://localhost:8080/ 
+- abrir o postman e colocar http://localhost:8080/
+- /questoes     /provas     /alunos     /escola
+- visualizar o banco de dados no link http://http://localhost:8080/h2-console
+- JDBC URL: = jdbc:h2:mem:testdb
+- username : sa 
+- password=: 
+### Estrutura
+
+![camadas](https://user-images.githubusercontent.com/53982003/106371918-14f07f00-6349-11eb-8cf0-d8b6ab930b52.jpg)
+- Na imagem acima podemos ver a estrutura de camadas utilizada no projeto 
+
