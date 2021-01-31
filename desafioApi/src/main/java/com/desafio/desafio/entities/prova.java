@@ -34,11 +34,10 @@ public class prova implements Serializable{
 		
 	}
 
-	public prova(Long id, List<questao> questoes, Set<aluno> alunos) {
+	public prova(Long id) {
 		super();
 		this.id = id;
-		this.questoes = questoes;
-		this.alunos = alunos;
+		
 	}
 
 	public Long getId() {

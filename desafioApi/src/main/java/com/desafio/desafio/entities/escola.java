@@ -26,10 +26,10 @@ public escola() {
 }
 
 
-public escola(Long id, List<aluno> alunos) {
+public escola(Long id) {
 	super();
 	this.id = id;
-	this.alunos = alunos;
+	
 }
 
 

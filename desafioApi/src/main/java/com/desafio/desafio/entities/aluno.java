@@ -43,6 +43,7 @@ private Long id;
 		this.nome = nome;
 		this.resultados = resultados;
 		this.escola = escola;
+
 		
 	}
 
@@ -109,6 +110,7 @@ private Long id;
 	
 	public int getMedia() {
 		int nota =0;
+		int aux =0;
 		int media=0;
 		int qauntprovas =0;
 			for(prova x: provas){
@@ -116,7 +118,8 @@ private Long id;
 				qauntprovas++;
 	for (questao y : x.getQuestoes()) {
 	if	(y.getResposta().equalsIgnoreCase(getResultados())){
-		nota+=y.getPeso();
+		aux=y.getPeso()*1;
+		nota += aux;
 						}
 	}
 	nota+=nota;

@@ -28,12 +28,14 @@ public questao () {
 	
 }
 
-public questao(Long id, int peso, String resposta, com.desafio.desafio.entities.prova prova) {
+public questao(Long id, int peso, String resposta,prova prova) {
 	super();
 	this.id = id;
 	this.setPeso (peso);
 	this.setResposta (resposta);
 	this.prova = prova;
+
+	
 }
 
 public Long getId() {
