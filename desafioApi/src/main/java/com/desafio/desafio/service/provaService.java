@@ -1,6 +1,7 @@
 package com.desafio.desafio.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,5 +17,9 @@ public class provaService {
 	
 	public List<prova> findAll(){
 		return repository.findAll();
+	}
+	public prova findById(Long id) {
+		Optional<prova> obj = repository.findById(id);
+		return obj.get();
 	}
 }

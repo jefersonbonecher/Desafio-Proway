@@ -10,11 +10,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table (name = "tb_prova")
 public class prova implements Serializable{
 	
 	
@@ -22,25 +23,23 @@ public class prova implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
+	@JsonIgnore
 	@OneToMany(mappedBy = "prova")
 	private List<questao> questoes = new ArrayList<>(); 
-	
-	private Set<aluno> alunos = new HashSet<>();
+	@JsonIgnore
+	@ManyToMany(mappedBy = "provas")
+     private Set<aluno> alunos = new HashSet<>();
 	
 	public prova(){
 		
 	}
-		
+
 	public prova(Long id, List<questao> questoes, Set<aluno> alunos) {
 		super();
 		this.id = id;
 		this.questoes = questoes;
 		this.alunos = alunos;
 	}
-
-
-
 
 	public Long getId() {
 		return id;
@@ -50,9 +49,13 @@ public class prova implements Serializable{
 		this.id = id;
 	}
 
-	
-	public List<questao> getquestoes() {
+	public List<questao> getQuestoes() {
 		return questoes;
+	}
+
+	
+	public Set<aluno> getAlunos() {
+		return alunos;
 	}
 
 
@@ -63,7 +66,6 @@ public class prova implements Serializable{
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -81,16 +83,6 @@ public class prova implements Serializable{
 			return false;
 		return true;
 	}
-
-
-	public Set<aluno> getAlunos() {
-		return alunos;
-	}
-
-
-
-	
-	
 	
 
 }

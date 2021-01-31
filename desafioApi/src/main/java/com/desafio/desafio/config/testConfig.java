@@ -30,10 +30,12 @@ public class testConfig implements CommandLineRunner {
 		
 		provaRepository.saveAll(Arrays.asList(p1,p2));
 		
-		questao q1 = new questao(null,2, "A",p1);
-		questao q2 = new questao(null,1,"c", p2);
+		questao q1 = new questao(null,2, "A");
+		questao q2 = new questao(null,1,"c");
 		
 		questaoRepository.saveAll(Arrays.asList(q1,q2));
 	}
 
 }
+
+

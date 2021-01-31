@@ -8,10 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 @Entity
-@Table (name = "tb_questao")
 public class questao implements Serializable{
 	
 	
@@ -30,10 +28,11 @@ public questao () {
 	
 }
 
-public questao(Long id, int peso, String resposta, prova prova) {
+public questao(Long id, int peso, String resposta, com.desafio.desafio.entities.prova prova) {
+	super();
 	this.id = id;
-	this.peso = peso;
-	this.resposta = resposta;
+	this.setPeso (peso);
+	this.setResposta (resposta);
 	this.prova = prova;
 }
 
@@ -50,16 +49,20 @@ public int getPeso() {
 }
 
 public void setPeso(int peso) {
-	this.peso = peso;
+	if (peso <=0 && ( peso>=10)){
+		this.peso = peso;
+	}else {
+		throw new IllegalArgumentException("peso inválido");
+	}
+	
 }
-
 
 public String getResposta() {
 	return resposta;
 }
 
 public void setResposta(String resposta) {
-	this.resposta = resposta;
+		this.resposta = resposta;
 }
 
 public prova getProva() {
@@ -94,12 +97,6 @@ public boolean equals(Object obj) {
 		return false;
 	return true;
 }
-
-
-
-
-
-
 
 
 

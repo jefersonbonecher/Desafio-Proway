@@ -4,10 +4,18 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
 public class aluno implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -16,23 +24,27 @@ public class aluno implements Serializable {
 private Long id;
 	private String nome; 
 	private String resultados;
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "escola_id")
+	private escola escola;
+	
+	@ManyToMany
+	@JoinTable(name ="tb_aluno_provas", joinColumns = @JoinColumn(name = "aluno_id"), inverseJoinColumns = @JoinColumn(name = "prova_id"))  
 	private Set<prova> provas = new HashSet<>();
 	
 	public aluno() {
 		
 	}
 
-
-
-	public aluno(Long id, String nome, String resultados, Set<prova> provas) {
+	public aluno(Long id, String nome, String resultados,escola escola) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.resultados = resultados;
-		this.provas = provas;
+		this.escola = escola;
+		
 	}
-
-
 
 	public Long getId() {
 		return id;
@@ -58,10 +70,17 @@ private Long id;
 		this.resultados = resultados;
 	}
 
+	public escola getEscola() {
+		return escola;
+	}
+
+	public void setEscola(escola escola) {
+		this.escola = escola;
+	}
+
 	public Set<prova> getProvas() {
 		return provas;
 	}
-	
 
 	@Override
 	public int hashCode() {
@@ -87,6 +106,26 @@ private Long id;
 			return false;
 		return true;
 	}
+	
+	public int getMedia() {
+		int nota =0;
+		int media=0;
+		int qauntprovas =0;
+			for(prova x: provas){
+				nota=0;
+				qauntprovas++;
+	for (questao y : x.getQuestoes()) {
+	if	(y.getResposta().equalsIgnoreCase(getResultados())){
+		nota+=y.getPeso();
+						}
+	}
+	nota+=nota;
+		}
+			media = nota/qauntprovas;
+		return media;
+}
+				
+
 
 
 }
